@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Orden de trabajo</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="./js/prueba.js"></script>
+    <link href="/Ordenes de Trabajo/css/estilos.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <form action=" "  method="post" id="formulario" >
+
+    <label> nombre  </label>
+    <br/>
+    <input name="nombre" type="text" value="" id="nombre"/><br>
+    <label class="apellido"> <br />
+    apellido</label><br>
+    <input name="apellido" type="text" value=""  id="apellidos"/ ><br><br>
+    <!--los  botones  onclick    que me  llevan al  javascrip  al  ajax-->
+    <input name="guardar" type="button"  onClick="grabar();" value="guadar" class="guardar" />
+    <input name="guardar" type="button"  onClick="grabar2();" value="modificar" class="guardar" />
+	  <input name="guardar" type="button"  onClick="grabar3();" value="eliminar" class="guardar" />
+    <input name="procesar" id="procesar" type="hidden"/>
+     <input name="modificar" id="modificar" type="hidden" value="modificar"/>
+
+    </form>
+  </body>
+</html>
