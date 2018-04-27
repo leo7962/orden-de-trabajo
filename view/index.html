@@ -6,24 +6,79 @@
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="./js/prueba.js"></script>
-    <link href="/Ordenes de Trabajo/css/estilos.css" rel="stylesheet" type="text/css">
+    <link href="/css/estilos.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
   </head>
   <body>
-    <form action=" "  method="post" id="formulario" >
+    <div class="pure-g">
+           <div class="pure-u-1-12">
 
-    <label> nombre  </label>
-    <br/>
-    <input name="nombre" type="text" value="" id="nombre"/><br>
-    <label class="apellido"> <br />
-    apellido</label><br>
-    <input name="apellido" type="text" value=""  id="apellidos"/ ><br><br>
-    <!--los  botones  onclick    que me  llevan al  javascrip  al  ajax-->
-    <input name="guardar" type="button"  onClick="grabar();" value="guadar" class="guardar" />
-    <input name="guardar" type="button"  onClick="grabar2();" value="modificar" class="guardar" />
-	  <input name="guardar" type="button"  onClick="grabar3();" value="eliminar" class="guardar" />
-    <input name="procesar" id="procesar" type="hidden"/>
-     <input name="modificar" id="modificar" type="hidden" value="modificar"/>
+               <form action="?action=<?php echo $alm->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post" class="pure-form pure-form-stacked" >
 
-    </form>
+
+                   <table >
+                     <tr>
+                       <th> Id del producto </th>
+                       <td><input type="number" name="id" value="<?php echo $alm->__GET('idProducto'); ?>" /></td>
+                     </tr>
+                       <tr>
+                           <th >Producto nombre</th>
+                           <td><input type="text" name="Nombre del Producto" value="<?php echo $alm->__GET('Productonombre'); ?>"/></td>
+                       </tr>
+                       <tr>
+                           <th >Producto codigo</th>
+                           <td><input type="number" name="Codigo de producto" value="<?php echo $alm->__GET('Productocodigo'); ?>"  /></td>
+                       </tr>
+                       <tr>
+                         <tr>
+                             <th >id historial</th>
+                             <td><input type="number" name="identificacion historial" value="<?php echo $alm->__GET('historial_idhistorial'); ?>"  /></td>
+                         </tr>
+                       </tr>
+                       <tr>
+                           <th >Descripcion del producto</th>
+                           <td><input type="text" name="Descripcion del producto" value="<?php echo $alm->__GET(Productodescripcion'); ?>"  /></td>
+                       </tr>
+                       <tr>
+                           <td colspan="2">
+                               <button type="submit" class="pure-button pure-button-primary">Guardar</button>
+                           </td>
+                       </tr>
+                   </table>
+               </form>
+
+               <table class="pure-table pure-table-horizontal">
+                   <thead>
+                       <tr>
+                           <th >Nombre del Producto</th>
+                           <th >Codigo del producto</th>
+                           <th >Id historial</th>
+                           <th >Descripcion del producto</th>
+                           <th></th>
+                           <th></th>
+                       </tr>
+                   </thead>
+                   <?php foreach($model->Listar() as $r): ?>
+                       <tr>
+                           <td><?php echo $r->__GET('Productonombre'); ?></td>
+                           <td><?php echo $r->__GET('Productocodigo'); ?></td>
+                           <td><?php echo $r->__GET('historial_idhistorial'); ?></td>
+                           <td><?php echo $r->__GET('Productodescripcion'); ?></td>
+                           <td>
+                               <a href="?action=editar&id=<?php echo $r->id; ?>">Editar</a>
+                           </td>
+                           <td>
+                               <a href="?action=eliminar&id=<?php echo $r->id; ?>">Eliminar</a>
+                           </td>
+                       </tr>
+                   <?php endforeach; ?>
+               </table>
+
+           </div>
+       </div>
   </body>
 </html>

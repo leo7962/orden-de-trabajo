@@ -7,6 +7,10 @@
   <body>
     <?php
       include "./view/index.php";
+      include './controller/controlHistorial.php';
+      include './controller/controlOS.php';
+      include './controller/controlOT.php';
+      include './controller/controlProducto.php';
      ?>
   </body>
 </html>
